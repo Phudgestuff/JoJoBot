@@ -8,3 +8,6 @@ JoJoBot works on a system where a user will obtain a stand randomly (5 resets ar
 
 ## What's new?
 In this new version, I've taken a different approach to how the bot is structured. I learned more about object oriented programming and about discord.py/pycord after I created the first three versions. With this version, there is a series of dictionaries in JSON files and in classes within Python files. The stand list contains a stand's name, moveset, type and when they change to a new ACT (if they do). There is also a JSON file containing user information and two Python files that deal with moves. The big change here is that, instead of trying to fit every move's code within the code of the `/move` command, in the moves dictionary, each move contains a sub-entry that holds the method that the move runs, so that each move has it's individual function written and encapsulated within a `movefunctions.py` file.
+
+## Dependencies
+**Add later**

@@ -11,3 +11,5 @@ In this new version, I've taken a different approach to how the bot is structure
 
 ## Dependencies
 **Add later**
+
+# This project is on hold :(

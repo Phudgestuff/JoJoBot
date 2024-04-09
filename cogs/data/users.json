@@ -1,0 +1,40 @@
+{
+    "589489342234492928": {
+        "moves": [
+            1,
+            3,
+            4,
+            0
+        ],
+        "stand": 1,
+        "level": 11,
+        "exp": 47,
+        "reqExp": 169,
+        "battle": true,
+        "health": 23,
+        "maxHealth": 23,
+        "resets": 0,
+        "damageMult": 1,
+        "accMult": 1,
+        "lastMove": 4
+    },
+    "859458385819729921": {
+        "moves": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "stand": 1,
+        "level": 2,
+        "exp": 28,
+        "reqExp": 36,
+        "battle": true,
+        "health": 53,
+        "maxHealth": 200,
+        "resets": 0,
+        "damageMult": 1,
+        "accMult": 1,
+        "lastMove": 0
+    }
+}

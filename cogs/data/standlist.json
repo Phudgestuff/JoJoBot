@@ -1,0 +1,54 @@
+{
+    "0":{
+        "name":"None", 
+        "moves":[1], 
+        "type":"none", 
+        "acts":[0]
+    },
+
+    "1":{
+        "name":"Star Platinum", 
+        "moves":[1, 3, 4], 
+        "type":"Physical/Growth", 
+        "acts":[0]
+    },
+
+    "2":{
+        "name":"Holly Joestar's stand", 
+        "moves":[2], 
+        "type":"Spiritual", 
+        "acts":[0]
+    },
+
+    "3":{
+        "name":"Echoes", 
+        "moves":[1], 
+        "type":"Growth", 
+        "acts":[0, 1]
+    },
+
+
+
+
+
+
+    "3.1":{
+        "name":"Echoes ACT 1", 
+        "moves":[1], 
+        "type":"Environmental/Growth", 
+        "acts":[0, 10]
+    },
+    "3.2":{
+        "name":"Echoes ACT 2", 
+        "moves":[1], 
+        "type":"Environmental/Growth", 
+        "acts":[0, 20]
+    },
+    "3.3":{
+        "name":"Echoes ACT 3", 
+        "moves":[1], 
+        "type":"Environmental", 
+        "acts":[0]
+    }
+
+}

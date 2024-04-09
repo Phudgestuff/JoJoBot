@@ -1,4 +1,4 @@
-#THIS PROGRAM USES PYCORD, NOT DISCORD.PY BECAUSE IT IS BOILERPLATE CITY
+#THIS PROGRAM USES PYCORD, NOT DISCORD.PY BECAUSE THAT IS BOILERPLATE CITY
 
 import discord #pycord
 from discord.ext import commands
@@ -24,7 +24,7 @@ with open('./token.json', 'r') as file:
 
 client = commands.Bot(command_prefix='!!', intents=intents)
 
-exclude = ['getdata.py', 'func.py']
+exclude = ['getdata.py', 'func.py'] # shits itself if you try to to add these as cogs because they uh... aren't cogs
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py") and (filename not in exclude):
@@ -33,8 +33,6 @@ for filename in os.listdir("./cogs"):
 
 @client.event
 async def on_ready():
-
-        #await client.sync_commands()
 
     print(f'Logged in as {client.user}')
 
@@ -45,19 +43,20 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    try:
+    try: # initialise every user that sends a message (everyone must play....)
         users = cogs.getdata.users.read_info()
         stands = cogs.getdata.Fetch('./cogs/data/standlist.json').read_info()
-        users[str(message.author.id)]
+        users[str(message.author.id)] # gives index error if user id entry doesn't exist
+        
         id = str(message.author.id)
         users[id]['exp'] += 1
-        if users[id]['exp'] == users[id]['reqExp']:
+        if users[id]['exp'] == users[id]['reqExp']: # updating user's level, required exp, health and maxhealth
             users[id]['level'] += 1
             users[id]['reqExp'] = math.floor((users[id]['level']+4) ** 2)
-            #users[id]['exp'] = 0
             users[id]['health'] = math.ceil(users[id]['health'] * 1.02)
             users[id]['maxHealth'] = math.ceil(users[id]['maxHealth'] * 1.02)
-            print(message.author.name, 'reached level', users[id]['level'])
+            
+            print(message.author.name, 'reached level', users[id]['level']) # logs to console so I can be nosy
             embed = discord.Embed(
                 title=f'You reached level {users[id]["level"]}',
                 description='You may have unlocked new moves. Use `/viewmoves` to view your available moves.',
@@ -84,22 +83,22 @@ async def on_message(message):
     await client.process_commands(message)
 
 def isOwner(id):
-    if id == 589489342234492928: #my id
+    if id == 589489342234492928: # my id, get a load of that
         return True
     else:
         return False
 
 @client.slash_command()
-async def test(ctx):
+async def test(ctx): # testing command so I can see that my child is living fruitfully
     if isOwner(ctx.user.id):
         print('test')
         await ctx.respond('test')
         await ctx.respond(f'server id: {ctx.guild_id}')
     else:
-        await ctx.respond(f'You cannot do this command unless you are the owner of this bot.')
+        await ctx.respond(f'You cannot do this command unless you are the owner of this bot.') # this could probably be less repetitive but I'm too lazy and ctrl+v exists
 
 @client.slash_command(guild_ids=guilds)
-async def do(ctx, command):
+async def do(ctx, command): # this exists for me to piss about with not even gonna lie
     if isOwner(ctx.user.id):
         print('do')
         await ctx.respond('sending message...')
@@ -108,7 +107,7 @@ async def do(ctx, command):
         await ctx.respond(f'You cannot do this command unless you are the owner of this bot.')
 
 @client.slash_command(guild_ids=guilds)
-async def unload_module(ctx, module):
+async def unload_module(ctx, module): # used for testing changes to cogs
     if isOwner(ctx.user.id):
         await ctx.respond(f'unloading module {module}')
         client.unload_extension(f"cogs.{module}")
@@ -117,7 +116,7 @@ async def unload_module(ctx, module):
         await ctx.respond(f'You cannot do this command unless you are the owner of this bot.')
 
 @client.slash_command(guild_ids=guilds)
-async def load_module(ctx, module):
+async def load_module(ctx, module): # same use as unload_module but you can probably guess what it does differently
     if isOwner(ctx.user.id):
         await ctx.respond(f'loading module {module}')
         client.load_extension(f'cogs.{module}')
@@ -126,7 +125,7 @@ async def load_module(ctx, module):
         await ctx.respond(f'You cannot do this command unless you are the owner of this bot.')
 
 @client.slash_command(guild_ids=guilds)
-async def sync_modules(ctx):
+async def sync_modules(ctx): # fuck this command it takes years to complete and throws a load of errors
     if isOwner(ctx.user.id):
         await ctx.respond('syncing')
         await client.sync_commands()
